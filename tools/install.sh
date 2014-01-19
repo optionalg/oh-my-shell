@@ -2,7 +2,7 @@
 OHMYSHELL=`/usr/bin/env | grep 'OHMYSHELL=' | cut -d '=' -f 2`
 
 # Check for installation or for pre existing directory
-if [[ -d "$OHMYSH" ]] ;
+if [[ -d "$OHMYSHELL" ]] ;
 then
   echo -e "\033[0;33mYou already have Oh My Shell installed.\033[0m You'll need to remove $OHMYSHELL if you want to install"
   exit

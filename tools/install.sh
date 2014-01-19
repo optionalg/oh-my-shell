@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-OHMYSH=`/usr/bin/env | grep 'OHMYSH=' | cut -d '=' -f 2`
+OHMYSHELL=`/usr/bin/env | grep 'OHMYSHELL=' | cut -d '=' -f 2`
 
 # Check for installation or for pre existing directory
 if [[ -d "$OHMYSH" ]] ;
 then
-  echo -e "\033[0;33mYou already have Oh My Shell installed.\033[0m You'll need to remove $OHMYSH if you want to install"
+  echo -e "\033[0;33mYou already have Oh My Shell installed.\033[0m You'll need to remove $OHMYSHELL if you want to install"
   exit
-elif [[ -d $HOME/.oh-my-sh ]] ;
+elif [[ -d $HOME/.oh-my-shell ]] ;
 then
-  echo -e "\033[0;33mYou already have Oh My Shell installed.\033[0m You'll need to remove ~/.oh-my-sh if you want to install"
+  echo -e "\033[0;33mYou already have Oh My Shell installed.\033[0m You'll need to remove $HOME/.oh-my-sh if you want to install"
   exit
 fi
 
 # Clone Oh My shell
 echo -e "\033[0;34mCloning Oh My Shell...\033[0m"
-hash git >/dev/null && /usr/bin/env git clone https://github.com/NeuralSandwich/oh-my-shell.git ~/.oh-my-sh || {
+hash git >/dev/null && /usr/bin/env git clone https://github.com/NeuralSandwich/oh-my-shell.git $HOME/.oh-my-shell || {
   echo "git not installed"
   exit
 }
@@ -23,22 +23,17 @@ hash git >/dev/null && /usr/bin/env git clone https://github.com/NeuralSandwich/
 backup_zsh() {
   if [[ -f $HOME/.zshrc ]] || [[ -h $HOME/.zshrc ]] ;
   then
-    echo -e "\033[0;33mFound ~/.zshrc.\033[0m \033[0;32mBacking up to ~/.zshrc.pre-oh-my-sh\033[0m";
-    mv ~/.zshrc ~/.zshrc.pre-oh-my-sh;
+    echo -e "\033[0;33mFound $HOME/.zshrc.\033[0m \033[0;32mBacking up to $HOME/.zshrc.pre-oh-my-shell\033[0m";
+    mv $HOME/.zshrc $HOME/.zshrc.pre-oh-my-shell;
   fi
 }
 
 # Backup bash config files
 backup_bash() {
-  if [[ -f $HOME/.bashrc ]] || [[ -h $HOME/.bashrc ]] ;
-  then
-    echo -e "\033[0;33mFound ~/.bashrc.\033[0m \033[0;32mBacking up to ~/.bashrc.pre-oh-my-sh\033[0m";
-    mv ~/.bashrc ~/.bashrc.pre-oh-my-sh;
-  fi
   if [[ -f $HOME/.bash_profile ]] || [[ -h $HOME/.bash_profile ]] ;
   then
-    echo -e "\033[0;33mFound ~/.bash_profile.\033[0m \033[0;32mBacking up to ~/.bash_profile.pre-oh-my-sh\033[0m";
-    mv ~/.bash_profile ~/.bash_profile.pre-oh-my-sh;
+    echo -e "\033[0;33mFound $HOME/.bash_profile.\033[0m \033[0;32mBacking up to $HOME/.bash_profile.pre-oh-my-shell\033[0m";
+    mv $HOME/.bash_profile $HOME/.bash_profile.pre-oh-my-shell;
   fi
 }
 
@@ -52,15 +47,14 @@ backup() {
 
 # Copy bash templates
 copy_bash() {
-  echo -e "\033[0;34mUsing the Oh My Shell template file and adding it to ~/.bashrc and ~/.bash_profile\033[0m"
-  cp ~/.oh-my-sh/templates/bashrc.bash-template ~/.bashrc
-  cp ~/.oh-my-sh/templates/bash_profile.bash-template ~/.bash_profile
+  echo -e "\033[0;34mUsing the Oh My Shell template file and adding it to $HOME/.bash_profile\033[0m"
+  cp $HOME/.oh-my-shell/templates/bash_profile.bash-template $HOME/.bash_profile
 }
 
 # Copy zsh templates
 copy_zsh() {
-  echo -e "\033[0;34mUsing the Oh My Shell template file and adding it to ~/.zshrc\033[0m"
-  cp ~/.oh-my-sh/templates/zshrc.zsh-template ~/.zshrc
+  echo -e "\033[0;34mUsing the Oh My Shell template file and adding it to $HOME/.zshrc\033[0m"
+  cp $HOME/.oh-my-shell/templates/zshrc.zsh-template $HOME/.zshrc
 }
 
 # Copy template files
@@ -90,5 +84,5 @@ echo -e "\033[0;32m"'/ /_/ / / / /  / / / / / / /_/ /  (__  ) / / /  __/ / /  '"
 echo -e "\033[0;32m"'\____/_/ /_/  /_/ /_/ /_/\__, /  /____/_/ /_/\___/_/_/   '"\033[0m"
 echo -e "\033[0;32m"'                        /____/                           '"\033[0m"
 
-echo "\n\n \033[0;32m....is now installed.\033[0m"
+echo -e "\n\n \033[0;32m....is now installed.\033[0m"
 

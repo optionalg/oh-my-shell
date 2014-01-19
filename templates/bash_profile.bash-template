@@ -1,2 +1,8 @@
 # Path to your oh-my-shell config
 OHMYSHELL="$HOME/.oh-my-shell"
+
+# Set name of the theme to load
+# look in ~/.oh-my-shell/themes/
+SHELL_THEME="standard"
+
+source $OHMYSHELL/oh-my-shell.sh

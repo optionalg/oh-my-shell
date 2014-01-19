@@ -7,7 +7,7 @@ tools available which don't work well in zsh. **Oh my shell** is designed to kee
 bash in sync with your zsh environment, meaning when you have to use bash it
 shouldn't be so bad :)
 
-### Install
+### Setup
 
 `oh-my-shell` Should work with any recent release of zsh and bash.
 
@@ -19,6 +19,12 @@ curl -O "https://raw.github.com/NeuralSandwich/oh-my-shell/master/tools/install.
 ### wget
 ```
 wget "https://raw.github.com/NeuralSandwich/oh-my-shell/master/tools/install.sh"
+```
+
+### Install
+Then just run
+```
+./install.sh (it automatically backs up your ~/.bash_profile and ~/.zshrc)
 ```
 
 ### Why not help out?
